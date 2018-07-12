@@ -10,7 +10,7 @@ export default {
     //   }
     // });
     const res = await get('/weapp/demo');
-    console.log(res);
+    console.log(123,res);
     console.log('已经启动');
   }
 };
