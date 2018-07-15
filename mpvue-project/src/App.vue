@@ -4,9 +4,8 @@ import { get } from './util';
 import qcloud from 'wafer2-client-sdk';
 import config from './config';
 export default {
-  created() {
+  async created() {
     // qcloud.setLoginUrl(config.loginUrl);
-
     // qcloud.login({
     //   success: function(userInfo) {
     //     console.log('登录成功', userInfo);
@@ -15,8 +14,6 @@ export default {
     //     console.log('登录失败', err);
     //   }
     // });
-    // const res = await get('/weapp/demo');
-    // console.log(res);
     console.log('已经启动');
   }
 };
