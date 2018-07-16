@@ -1,17 +1,28 @@
 
 <script>
 import { get } from './util';
+import config from './config';
 export default {
   async created() {
- 
-    const res = await get('/weapp/demo');
-    console.log(123,res);
        wx.login({
-      //获取code
-      success: function(res) {
-       let code = res.code //返回code
-        console.log(code)
-      }
+        success: function(res) {
+          wx.request({
+            url: 'https://api.weixin.qq.com/sns/jscode2session',
+            data:{
+              appid:config.appid,
+              secret:config.appSecret,
+              js_code:res.code,
+              grant_type:'authorization_code'
+            },
+            header: {
+                'content-type': 'application/json'
+            },
+            success: function(res) {
+            let openid = res.data.openid //返回openid
+            console.log('openid:'+openid)
+            }
+          })
+        }
     })
     console.log('已经启动');
   }
