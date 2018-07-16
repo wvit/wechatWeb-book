@@ -8,7 +8,7 @@ const CONF = {
     qcloudSecretKey: 'f9QXP4VigQvDF4e1EDyVyDE0Zu0rUs1v',
     wxMessageToken: 'weixinmsgtoken',
     networkTimeout: 30000,
-    port: '5757',
+    port: '1999',
     rootPathname: '',
 
     // 微信小程序 App ID
