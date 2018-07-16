@@ -1,4 +1,4 @@
-module.exports = async ctx => {
+module.exports = async (ctx) => {
   ctx.state.data = {
     msg: 'hello nodejs'
   };

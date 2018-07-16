@@ -5,6 +5,7 @@ const config = {
     host,
     appid: 'wx6e179782a302b7c0',
     appSecret: 'd36aed0874afcab3ce9a71f8773e37ec',
+    loginUrl: `${host}/weapp/login`
 };
 
 export default config;
