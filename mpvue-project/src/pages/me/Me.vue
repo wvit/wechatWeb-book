@@ -1,19 +1,25 @@
 
 <template>
     <div>
-        个人中心页面
-        <button open-type="getUserInfo" lang="zh-CN"
- @getuserinfo="login">登录</button>
+        <img v-show="userInfo" :src="userInfo.avatarUrl" alt="logo">
+        <p v-show="userInfo">{{userInfo.nickName}}</p>
+        <button open-type="getUserInfo" lang="zh_CN" @getuserinfo="userLogin">登录</button>
     </div>
 </template>
 <script>
 export default {
-    methods:{
-        login(info){
-        console.log(info)
-        }
+  data() {
+    return {
+      userInfo: {}
+    };
+  },
+  methods: {
+    userLogin(res) {
+      console.log(res);
+      this.userInfo = res.target.userInfo;
     }
-}
+  }
+};
 </script>
 <style>
 </style>
