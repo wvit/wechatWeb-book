@@ -39,5 +39,19 @@ export default {
 };
 </script>
 
-<style>
+<style lang='scss'>
+
+.btn{
+  color: #fff;
+  background: #EA5A49;
+  margin: 10rpx 0;
+  padding: 0 15rpx;
+  border-radius: 5rpx;
+  font-size: 16rpx;
+  height: 40rpx;
+  width: 100%;
+}
+.btn:active{
+  background: #FA5A49; 
+}
 </style>

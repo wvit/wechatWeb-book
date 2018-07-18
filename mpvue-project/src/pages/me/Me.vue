@@ -1,9 +1,20 @@
 
 <template>
-  <div>
-    <img v-show="userInfo" :src="userInfo.avatarUrl" alt="logo">
-    <p v-show="userInfo">{{userInfo.nickName}}</p>
-    <button open-type="getUserInfo" lang="zh_CN" @getuserinfo="userLogin">登录</button>
+  <div class="container">
+    <div class="userinfo">
+      <img v-show="userInfo.avatarUrl" :src="userInfo.avatarUrl" alt="logo">
+      <p v-show="userInfo.avatarUrl">
+        {{userInfo.nickName}}
+      </p>
+
+    </div>
+    <YearProgress></YearProgress>
+     <button v-if="userInfo.avatarUrl" class="btn" @click="scanBook">
+       添加图书
+    </button>
+     <button v-else class="btn" open-type="getUserInfo" lang="zh_CN" @getuserinfo="userLogin">
+        登录
+    </button>
   </div>
 </template>
 <script>
@@ -22,6 +33,9 @@ export default {
   },
 
   methods: {
+    scanBook(){
+      console.log('扫码')
+    },
     userLogin(res) {
       let userState = wx.getStorageSync('userInfo');
       if (!userState) {
@@ -33,5 +47,19 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="scss">
+.container{
+  padding: 0 30rpx;
+  .userinfo{
+    margin-top: 100rpx;
+    text-align:center;
+    img{
+      width: 150rpx;
+      height: 150rpx;
+      border-radius:50%;
+      margin: 20rpx;
+     
+    }
+  }
+}
 </style>
