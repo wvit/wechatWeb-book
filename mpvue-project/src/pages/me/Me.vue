@@ -34,7 +34,11 @@ export default {
 
   methods: {
     scanBook(){
-      console.log('扫码')
+        wx.scanCode({
+            success: (res) => {
+              console.log(res)
+            }
+       });
     },
     userLogin(res) {
       let userState = wx.getStorageSync('userInfo');
