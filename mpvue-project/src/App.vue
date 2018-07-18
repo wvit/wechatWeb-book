@@ -40,18 +40,17 @@ export default {
 </script>
 
 <style lang='scss'>
-
-.btn{
+.btn {
   color: #fff;
-  background: #EA5A49;
+  background: #ea5a49;
   margin: 10rpx 0;
   padding: 0 15rpx;
   border-radius: 5rpx;
-  font-size: 16rpx;
-  height: 40rpx;
+  font-size: 34rpx;
+  line-height: 80rpx;
   width: 100%;
 }
-.btn:active{
-  background: #FA5A49; 
+.btn:active {
+  background: #fa5a49;
 }
 </style>

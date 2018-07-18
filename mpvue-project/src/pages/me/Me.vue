@@ -9,17 +9,21 @@
 
     </div>
     <YearProgress></YearProgress>
-     <button v-if="userInfo.avatarUrl" class="btn" @click="scanBook">
-       添加图书
+    <button v-if="userInfo.avatarUrl" class="btn" @click="scanBook">
+      添加图书
     </button>
-     <button v-else class="btn" open-type="getUserInfo" lang="zh_CN" @getuserinfo="userLogin">
-        登录
+    <button v-else class="btn" open-type="getUserInfo" lang="zh_CN" @getuserinfo="userLogin">
+      登录
     </button>
   </div>
 </template>
 <script>
+import YearProgress from '@/components/YearProgress';
 import { get, showSuccess } from '@/util';
 export default {
+  components: {
+    YearProgress
+  },
   data() {
     return {
       userInfo: {}
@@ -33,12 +37,12 @@ export default {
   },
 
   methods: {
-    scanBook(){
-        wx.scanCode({
-            success: (res) => {
-              console.log(res)
-            }
-       });
+    scanBook() {
+      wx.scanCode({
+        success: res => {
+          console.log(res);
+        }
+      });
     },
     userLogin(res) {
       let userState = wx.getStorageSync('userInfo');
@@ -52,17 +56,16 @@ export default {
 };
 </script>
 <style lang="scss">
-.container{
+.container {
   padding: 0 30rpx;
-  .userinfo{
+  .userinfo {
     margin-top: 100rpx;
-    text-align:center;
-    img{
+    text-align: center;
+    img {
       width: 150rpx;
       height: 150rpx;
-      border-radius:50%;
+      border-radius: 50%;
       margin: 20rpx;
-     
     }
   }
 }
