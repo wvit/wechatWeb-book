@@ -45,7 +45,7 @@ export default {
   background: #ea5a49;
   margin: 10rpx 0;
   padding: 0 15rpx;
-  border-radius: 5rpx;
+  border-radius: 10rpx;
   font-size: 34rpx;
   line-height: 80rpx;
   width: 100%;

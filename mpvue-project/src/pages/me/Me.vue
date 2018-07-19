@@ -2,11 +2,14 @@
 <template>
   <div class="container">
     <div class="userinfo">
-      <img v-show="userInfo.avatarUrl" :src="userInfo.avatarUrl" alt="logo">
-      <p v-show="userInfo.avatarUrl">
+      <img v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" alt="logo">
+      <img v-else src="../../../static/img/login.png">
+      <p v-if="userInfo.nickName">
         {{userInfo.nickName}}
       </p>
-
+      <p v-else>
+        未登录
+      </p>
     </div>
     <YearProgress></YearProgress>
     <button v-if="userInfo.avatarUrl" class="btn" @click="scanBook">
