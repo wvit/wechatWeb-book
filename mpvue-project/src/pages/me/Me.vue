@@ -22,7 +22,7 @@
 </template>
 <script>
 import YearProgress from '@/components/YearProgress';
-import { get, showSuccess } from '@/util';
+import { post, showSuccess } from '@/util';
 export default {
   components: {
     YearProgress
@@ -40,10 +40,20 @@ export default {
   },
 
   methods: {
+    async addBook(isbn) {
+      const res = await post('/weapp/addBook', {
+        isbn,
+        //获取发送openid
+        openid
+      });
+    },
     scanBook() {
       wx.scanCode({
         success: res => {
           console.log(res);
+          if (res.result) {
+            this.addBook(res.result);
+          }
         }
       });
     },
