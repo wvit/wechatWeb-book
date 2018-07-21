@@ -23,6 +23,7 @@
 <script>
 import YearProgress from '@/components/YearProgress';
 import { post, showSuccess } from '@/util';
+import config from '@/config';
 export default {
   components: {
     YearProgress
@@ -40,19 +41,43 @@ export default {
   },
 
   methods: {
-    async addBook(isbn) {
+    async addBook(isbn, openid) {
       const res = await post('/weapp/addBook', {
         isbn,
-        //获取发送openid
         openid
       });
+
+      if (res.code == 0 && res.data.title) {
+        showSuccess('添加成功', `${res.data.title}添加成功`);
+      }
     },
     scanBook() {
+      let openid = null;
+      wx.login({
+        success: function(res) {
+          wx.request({
+            url: 'https://api.weixin.qq.com/sns/jscode2session',
+            data: {
+              appid: config.appid,
+              secret: config.appSecret,
+              js_code: res.code,
+              grant_type: 'authorization_code'
+            },
+            header: {
+              'content-type': 'application/json'
+            },
+            success: function(res) {
+              openid = res.data.openid; //返回openid
+              console.log('openid:' + openid);
+            }
+          });
+        }
+      });
       wx.scanCode({
         success: res => {
           console.log(res);
           if (res.result) {
-            this.addBook(res.result);
+            this.addBook(res.result, openid);
           }
         }
       });
