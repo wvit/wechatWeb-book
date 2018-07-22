@@ -22,7 +22,7 @@
 </template>
 <script>
 import YearProgress from '@/components/YearProgress';
-import { post, showSuccess } from '@/util';
+import { post, showSuccess, showModal } from '@/util';
 import config from '@/config';
 export default {
   components: {
@@ -46,10 +46,8 @@ export default {
         isbn,
         openid
       });
-
-      if (res.code == 0 && res.data.title) {
-        showSuccess('添加成功', `${res.data.title}添加成功`);
-      }
+      console.log(res);
+      showModal('添加成功', `${res.title}添加成功`);
     },
     scanBook() {
       let openid = null;
