@@ -8,7 +8,7 @@ app.$mount();
 
 export default {
   config: {
-    pages: ['pages/books/main', 'pages/comments/main', '^pages/me/main'],
+    pages: ['^pages/books/main', 'pages/comments/main', 'pages/me/main'],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#ea5149',

@@ -36,4 +36,6 @@ router.get('/message', controllers.message.get);
 router.post('/message', controllers.message.post);
 
 router.post('/addBook', controllers.addBook);
+router.post('/addBook', controllers.addBook);
+router.get('/bookList', controllers.bookList);
 module.exports = router;
