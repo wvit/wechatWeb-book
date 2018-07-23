@@ -1,13 +1,17 @@
 <template>
-    <div>
-        <div v-bind:key="book.id" v-for='book in books'>
-            {{book.title}}
-        </div>
-    </div>
+  <div>
+    <Card v-bind:key="book.id" v-for='book in books' :book='book'>
+      {{book.title}}
+    </Card>
+  </div>
 </template>
 <script>
 import { get } from '@/util';
+import Card from '@/components/Card';
 export default {
+  components: {
+    Card
+  },
   data() {
     return {
       books: []
@@ -25,5 +29,6 @@ export default {
   }
 };
 </script>
-<style>
+<style lang='scss'>
+
 </style>
