@@ -93,15 +93,15 @@ export default {
 </script>
 <style lang="scss">
 .container {
-  padding: 0 30rpx;
+  padding: 0 30px;
   .userinfo {
-    margin-top: 100rpx;
+    margin-top: 40px;
     text-align: center;
     img {
-      width: 150rpx;
-      height: 150rpx;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      margin: 20rpx;
+
     }
   }
 }
