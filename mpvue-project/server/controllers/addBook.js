@@ -3,10 +3,15 @@
 //入库
 // https://api.douban.com/v2/book/isbn/
 const https = require('https');
-const { mysql } = require('../qcloud');
+const {
+  mysql
+} = require('../qcloud');
 module.exports = async ctx => {
   //获取前台发来的信息
-  const { isbn, openid } = ctx.request.body;
+  const {
+    isbn,
+    openid
+  } = ctx.request.body;
   if (isbn && openid) {
     const findRes = await mysql('books')
       .select()
@@ -25,7 +30,15 @@ module.exports = async ctx => {
     const bookInfo = await getJSON(url);
     //拿取有用的信息
     const rate = bookInfo.rating.average;
-    const { title, image, alt, publisher, summary, price } = bookInfo;
+    const {
+      title,
+      image,
+      alt,
+      publisher,
+      summary,
+      price,
+      userInfo
+    } = bookInfo;
     const tags = bookInfo.tags
       .map(item => {
         return `${item.title} ${item.count}`;
@@ -45,7 +58,8 @@ module.exports = async ctx => {
         summary,
         price,
         tags,
-        author
+        author,
+        userInfo
       });
       ctx.state.data = {
         title,

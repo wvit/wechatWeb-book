@@ -41,10 +41,13 @@ export default {
   },
 
   methods: {
-    async addBook(isbn, openid) {
+    async addBook(isbn, openid, userInfo) {
       const res = await post('/weapp/addBook', {
         isbn,
-        openid
+        openid,
+        userInfo: {
+          userName: userInfo.nickName
+        }
       });
       console.log(res);
       showModal('添加成功', `${res.title}添加成功`);
@@ -75,7 +78,8 @@ export default {
         success: res => {
           console.log(res);
           if (res.result) {
-            this.addBook(res.result, openid);
+            let userInfo = wx.getStorageSync('userInfo');
+            this.addBook(res.result, openid, userInfo);
           }
         }
       });
@@ -101,7 +105,6 @@ export default {
       width: 150px;
       height: 150px;
       border-radius: 50%;
-
     }
   }
 }

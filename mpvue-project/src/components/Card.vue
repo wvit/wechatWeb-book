@@ -5,10 +5,11 @@
     </div>
     <div class="detail">
       <div class="row">
-        <div class="right">
+        <div class="right text-primary">
           {{book.rate}}
+          <Rate :value="book.rate"></Rate>
         </div>
-        <div class="left">
+        <div class="left text-primary">
           {{book.title}}
         </div>
       </div>
@@ -22,7 +23,7 @@
       </div>
       <div class="row">
         <div class="right">
-          添加人
+          {{book.userInfo.nickName}}
         </div>
         <div class="left">
           {{book.publisher}}
@@ -33,7 +34,9 @@
 </template>
 
 <script>
+import Rate from '@/components/Rate';
 export default {
+  components: { Rate },
   props: ['book']
 };
 </script>

@@ -40,6 +40,9 @@ export default {
 </script>
 
 <style lang='scss'>
+.text-primary {
+  color: #ea5149;
+}
 .btn {
   color: #fff;
   background: #ea5a49;
